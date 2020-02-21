@@ -91,7 +91,7 @@ float eccentricity(PseudoJet Jet, vector<PseudoJet> constituents){
    unsigned int num=constituents.size();
    double Dphi[num],Deta[num],E[num];
    double etaSum = 0.; double phiSum = 0.; double eTot = 0.;
-
+  //這邊為什麼用unsigned?
    for (unsigned int j=0; j< num; j++) {
         PseudoJet cp = constituents.at(j);
         E[j]=cp.e();
