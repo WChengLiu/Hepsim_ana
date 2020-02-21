@@ -74,7 +74,7 @@ using namespace fastjet;
 float EffectiveRadius(PseudoJet Jet, vector<PseudoJet> constituents, double jetR=0.5){
   float Energy = Jet.Et();
   float numerator = 0;
-  int size=constituents.size();
+  int size=constituents.size();//what's this 
   for(int i =0 ; i < size; i++){
     if(Jet.delta_R(constituents[i]) > jetR) continue;
     numerator+=constituents[i].Et()*Jet.delta_R(constituents[i]);
@@ -89,9 +89,9 @@ float EffectiveRadius(PseudoJet Jet, vector<PseudoJet> constituents, double jetR
 
 float eccentricity(PseudoJet Jet, vector<PseudoJet> constituents){
    unsigned int num=constituents.size();
-   double Dphi[num],Deta[num],E[num];
+  
+   double Dphi[num],Deta[num],E[num];//what is D means?
    double etaSum = 0.; double phiSum = 0.; double eTot = 0.;
-  //這邊為什麼用unsigned?
    for (unsigned int j=0; j< num; j++) {
         PseudoJet cp = constituents.at(j);
         E[j]=cp.e();
@@ -146,13 +146,13 @@ float eccentricity(PseudoJet Jet, vector<PseudoJet> constituents){
     VarianceMin = VarX;
   }
 
-  double ECC=1.0 - (VarianceMin/VarianceMax);
+  double ECC=1.0 - (VarianceMin/VarianceMax);//Is this from e=1-(rmax+rmin)/(rmax-rmin)??
 
   return ECC;
 
 }
 
-
+// I can't understand most of this function
 double nsubjettiness(PseudoJet Jet, vector<PseudoJet> constituents, int NSubJets, double jetRad=0.5) {
 
   //vector<CParticle> constit = jet.GetConstituents();                          
@@ -223,7 +223,7 @@ double splittingscale(PseudoJet Jet){
 }
 
 
-
+//OK!
 // find all files inside a directory
 std::vector<std::string> open(std::string name = "data.in") {
     vector<std::string> ntup;
