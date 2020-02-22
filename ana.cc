@@ -70,28 +70,28 @@ const double k2PI  = 2*kPI;
 using namespace fastjet;
 
 
-
+//建立使用PseudoJet格式的jet，整個vector起來
 float EffectiveRadius(PseudoJet Jet, vector<PseudoJet> constituents, double jetR=0.5){
-  float Energy = Jet.Et();
+  float Energy = Jet.Et();//return the transverse energy
   float numerator = 0;
-  int size=constituents.size();//what's this 
-  for(int i =0 ; i < size; i++){
+  int size=constituents.size();//
+  for(int i =0 ; i < size; i++){//累加有效的撞擊範圍
     if(Jet.delta_R(constituents[i]) > jetR) continue;
     numerator+=constituents[i].Et()*Jet.delta_R(constituents[i]);
   }
   //cout << Energy << endl;                                                     
   //cout << numerator << endl;                                                  
-  return numerator/Energy;
+  return numerator/Energy;//=有效撞擊能量/總能
 }
 
 
 
 
 float eccentricity(PseudoJet Jet, vector<PseudoJet> constituents){
-   unsigned int num=constituents.size();
+   unsigned int num=constituents.size();//共有多少vector
   
    double Dphi[num],Deta[num],E[num];//what is D means?
-   double etaSum = 0.; double phiSum = 0.; double eTot = 0.;
+   double etaSum = 0.; double phiSum = 0.; double eTot = 0.;// what is eTot?
    for (unsigned int j=0; j< num; j++) {
         PseudoJet cp = constituents.at(j);
         E[j]=cp.e();
