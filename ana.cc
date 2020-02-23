@@ -89,8 +89,8 @@ float EffectiveRadius(PseudoJet Jet, vector<PseudoJet> constituents, double jetR
 
 float eccentricity(PseudoJet Jet, vector<PseudoJet> constituents){
    unsigned int num=constituents.size();//共有多少vector
-  
-   double Dphi[num],Deta[num],E[num];//what is D means?
+  //不太懂這個積分用在哪部分
+   double Dphi[num],Deta[num],E[num];//what is E[] means?
    double etaSum = 0.; double phiSum = 0.; double eTot = 0.;// what is eTot?
    for (unsigned int j=0; j< num; j++) {
         PseudoJet cp = constituents.at(j);
@@ -167,7 +167,7 @@ double nsubjettiness(PseudoJet Jet, vector<PseudoJet> constituents, int NSubJets
    for(unsigned int i=0; i< constituents.size(); i++){
      PseudoJet c_i = constituents[i];
      if(c_i.delta_R(Jet_p) > jetRad) continue;
-     jetConstit.push_back(c_i);
+     jetConstit_back(c_i);
      num++;
    }
    if(num < (unsigned int)NSubJets) {return -999;}
@@ -297,7 +297,7 @@ int main(int argc, char **argv)
   cout << "\n -> Output file is =" << outputfile << endl;
   TFile * RootFile = new TFile(outputfile.c_str(), "RECREATE", "Histogram file");
   TH1D * h_debug = new TH1D("debug", "events",10,0,10);
-
+//格式TH1D (const char *name, const char *title, Int_t nbinsx, Double_t xlow, Double_t xup)
   TH1D * h_pt_jet = new TH1D("jet_pt", "pt jets",400,0,1000);
   TH1D * h_e_jet = new TH1D("jet_energy", "energy jets",5000,0,1000);
   TH1D * h_eta_jet = new TH1D("jet_eta", "eta jets", 120, -6, 6);
