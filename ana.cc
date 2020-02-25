@@ -616,7 +616,7 @@ int main(int argc, char **argv)
 
 
   // read detector geometry for this configuration 
-  string detector="./data/rfull009_sifcch7/sifcch7/sifcch7.pandora";
+  string detector="./data/rfull009_sifcch7/sifcch7/sifcch7.pandora";// if we don't have sifcch files,command will show [what():  Parse error reading input XML file.]
   DetectorGeometrySimple* geom = new   DetectorGeometrySimple(detector);
   string caloType="HAD_BARREL";
   DetectorGeometrySimple::ExtraSubDetectorParameters* xsubdet = geom->getExtraSubDetectorParametersFromType(caloType);
